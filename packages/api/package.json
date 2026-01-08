@@ -1,0 +1,28 @@
+{
+  "name": "@Backend/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@Backend/auth": "workspace:*",
+    "@Backend/db": "workspace:*",
+    "@Backend/env": "workspace:*",
+    "@trpc/client": "^11.7.2",
+    "@trpc/server": "catalog:",
+    "@types/pg": "catalog:",
+    "dotenv": "catalog:",
+    "drizzle-orm": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@Backend/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

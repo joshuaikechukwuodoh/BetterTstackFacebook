@@ -1,0 +1,24 @@
+{
+  "name": "@Backend/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@Backend/db": "workspace:*",
+    "@Backend/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@Backend/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
