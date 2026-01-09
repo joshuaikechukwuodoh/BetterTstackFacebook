@@ -1,7 +1,7 @@
-import { createContext } from "@Backend/api/context";
-import { appRouter } from "@Backend/api/routers/index";
-import { auth } from "@Backend/auth";
-import { env } from "@Backend/env/server";
+import { createContext } from "@backend/api/context";
+import { appRouter } from "@backend/api/routers/index";
+import { auth } from "@backend/auth";
+import { env } from "@backend/env/server";
 import { trpcServer } from "@hono/trpc-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
@@ -17,7 +17,7 @@ app.use(
     allowMethods: ["GET", "POST", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-  }),
+  })
 );
 
 app.on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw));
@@ -29,7 +29,7 @@ app.use(
     createContext: (_opts, context) => {
       return createContext({ context });
     },
-  }),
+  })
 );
 
 app.get("/", (c) => {

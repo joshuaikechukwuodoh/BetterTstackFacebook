@@ -1,5 +1,5 @@
 {
-  "name": "@Backend/auth",
+  "name": "@backend/auth",
   "type": "module",
   "exports": {
     ".": {
@@ -11,14 +11,14 @@
   },
   "scripts": {},
   "dependencies": {
-    "@Backend/db": "workspace:*",
-    "@Backend/env": "workspace:*",
+    "@backend/db": "workspace:*",
+    "@backend/env": "workspace:*",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@Backend/config": "workspace:*",
+    "@backend/config": "workspace:*",
     "typescript": "catalog:"
   }
 }

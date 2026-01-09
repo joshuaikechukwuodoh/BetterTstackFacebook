@@ -1,5 +1,5 @@
 {
-  "name": "@Backend/api",
+  "name": "@backend/api",
   "type": "module",
   "exports": {
     ".": {
@@ -11,18 +11,20 @@
   },
   "scripts": {},
   "dependencies": {
-    "@Backend/auth": "workspace:*",
-    "@Backend/db": "workspace:*",
-    "@Backend/env": "workspace:*",
+    "@backend/auth": "workspace:*",
+    "@backend/core": "workspace:*",
+    "@backend/db": "workspace:*",
+    "@backend/env": "workspace:*",
     "@trpc/client": "^11.7.2",
     "@trpc/server": "catalog:",
     "@types/pg": "catalog:",
     "dotenv": "catalog:",
     "drizzle-orm": "catalog:",
+    "hono": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@Backend/config": "workspace:*",
+    "@backend/config": "workspace:*",
     "typescript": "catalog:"
   }
 }

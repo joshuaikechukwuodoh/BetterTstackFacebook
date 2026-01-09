@@ -1,5 +1,5 @@
 {
-  "extends": "@Backend/config/tsconfig.base.json",
+  "extends": "@backend/config/tsconfig.base.json",
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,
