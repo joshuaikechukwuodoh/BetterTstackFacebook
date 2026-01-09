@@ -1,5 +1,5 @@
 {
-  "name": "@Backend/env",
+  "name": "@backend/env",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,7 +12,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@Backend/config": "workspace:*",
+    "@backend/config": "workspace:*",
     "@types/bun": "catalog:",
     "typescript": "catalog:"
   }
