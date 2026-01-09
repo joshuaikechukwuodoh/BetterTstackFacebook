@@ -19,8 +19,12 @@ export const todoRouter = router({
     }),
 
   toggle: publicProcedure
-    .input(z.object({ id: z.number(), completed: z.boolean() }))
-    .mutation(async ({ input }) => {
+    .input(z.object({
+       id: z.number(),
+       completed: z.boolean() 
+      }))
+    .mutation
+    (async ({ input }) => {
       return await db.update(todo).set({ completed: input.completed }).where(eq(todo.id, input.id));
     }),
 

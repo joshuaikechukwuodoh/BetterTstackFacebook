@@ -1,25 +1,65 @@
 import { db } from "@Backend/db";
-import * as schema from "@Backend/db/schema/auth";
-import { env } from "@Backend/env/server";
-import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import * as schema from "@Backend/db/schema/auth";
+import { betterAuth } from "better-auth";
 
 export const auth = betterAuth({
-  database: drizzleAdapter(db, {
-    provider: "pg",
+	database: drizzleAdapter(db, {
+		provider: "pg",
 
-    schema: schema,
-  }),
-  trustedOrigins: [env.CORS_ORIGIN],
-  emailAndPassword: {
-    enabled: true,
-  },
-  advanced: {
-    defaultCookieAttributes: {
-      sameSite: "none",
-      secure: true,
-      httpOnly: true,
+		schema: schema,
+	}),
+	trustedOrigins: [process.env.CORS_ORIGIN || ""],
+	emailAndPassword: {
+		enabled: true,
+	},
+	advanced: {
+		defaultCookieAttributes: {
+			sameSite: "none",
+			secure: true,
+			httpOnly: true,
+		},
+	},
+	user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        default: "user",
+        enum: ["user", "admin", "tester"],
+      },
     },
   },
-  plugins: [],
 });
+
+
+
+
+
+// import { db } from @Backend/db;
+// import * as schema from "@Backend/db/schema/auth";
+// import { env } from "@Backend/env/server";
+// import { betterAuth } from "better-auth";
+// import { drizzleAdapter } from "better-auth/adapters/drizzle";
+
+// export const auth = betterAuth({
+//   database: drizzleAdapter(db, {
+//     provider: "pg",
+
+//     schema: schema,
+//   }),
+//   trustedOrigins: [env.CORS_ORIGIN],
+//   emailAndPassword: {
+//     enabled: true,
+//   },
+//   advanced: {
+//     defaultCookieAttributes: {
+//       sameSite: "none",
+//       secure: true,
+//       httpOnly: true,
+//     },
+//   },
+//   plugins: [],
+// });
+
+
+
