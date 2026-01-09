@@ -1,5 +1,5 @@
 {
-  "name": "@Backend/db",
+  "name": "@backend/db",
   "type": "module",
   "exports": {
     ".": {
@@ -16,14 +16,14 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
-    "@Backend/env": "workspace:*",
+    "@backend/env": "workspace:*",
     "dotenv": "catalog:",
     "drizzle-orm": "catalog:",
     "pg": "^8.16.3",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@Backend/config": "workspace:*",
+    "@backend/config": "workspace:*",
     "@types/pg": "catalog:",
     "drizzle-kit": "^0.31.8",
     "typescript": "catalog:"

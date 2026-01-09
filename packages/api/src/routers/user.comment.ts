@@ -1,17 +1,41 @@
-import { db } from "@Backend/db";
-import { comments } from "@Backend/db/schema/comments";
-import { eq } from "drizzle-orm";
+/**
+ * User Comments API Router
+ * Uses core business logic from @backend/core
+ */
 import { z } from "zod";
-
 import { router, publicProcedure } from "../index";
 
+// Import from core package
+import {
+  getAllComments,
+  getCommentsByPostId,
+  getCommentById,
+  createComment,
+  updateComment,
+  deleteComment,
+} from "@backend/core";
+
 export const userCommentRouter = router({
-  // 🔹 Get all comments
+  // Get all comments
   getAll: publicProcedure.query(async () => {
-    return await db.select().from(comments);
+    return await getAllComments();
   }),
 
-  // 🔹 Create a comment
+  // Get comments by post ID
+  getByPostId: publicProcedure
+    .input(z.object({ postId: z.string().min(1) }))
+    .query(async ({ input }) => {
+      return await getCommentsByPostId(input.postId);
+    }),
+
+  // Get single comment by ID
+  getById: publicProcedure
+    .input(z.object({ id: z.string().min(1) }))
+    .query(async ({ input }) => {
+      return await getCommentById(input.id);
+    }),
+
+  // Create a comment
   createComment: publicProcedure
     .input(
       z.object({
@@ -22,10 +46,10 @@ export const userCommentRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      return await db.insert(comments).values(input);
+      return await createComment(input);
     }),
 
-  // 🔹 Update a comment
+  // Update a comment
   updateComment: publicProcedure
     .input(
       z.object({
@@ -34,13 +58,10 @@ export const userCommentRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      return await db
-        .update(comments)
-        .set({ content: input.content })
-        .where(eq(comments.id, input.id));
+      return await updateComment(input.id, input.content);
     }),
 
-  // 🔹 Delete a comment
+  // Delete a comment
   deleteComment: publicProcedure
     .input(
       z.object({
@@ -48,8 +69,6 @@ export const userCommentRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      return await db
-        .delete(comments)
-        .where(eq(comments.id, input.id));
+      return await deleteComment(input.id);
     }),
 });

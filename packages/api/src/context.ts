@@ -1,6 +1,6 @@
 import type { Context as HonoContext } from "hono";
 
-import { auth } from "@Backend/auth";
+import { auth } from "@backend/auth";
 
 export type CreateContextOptions = {
   context: HonoContext;
